@@ -32,9 +32,7 @@ function createAuth() {
     ],
     database: db
       ? drizzleAdapter(db, { provider: "pg", schema: authSchema })
-      : (() => {
-          throw new Error("DATABASE_URL is not set — auth requires a database connection");
-        })(),
+      : undefined,
     emailAndPassword: {
       enabled: true,
       requireEmailVerification: false,
@@ -113,6 +111,7 @@ export type NavSessionUser = {
 
 export async function getSessionUser(): Promise<NavSessionUser | null> {
   try {
+    if (!db) return null;
     const { headers } = await import("next/headers");
     const session = await auth.api.getSession({ headers: await headers() });
     if (!session?.user?.email) return null;

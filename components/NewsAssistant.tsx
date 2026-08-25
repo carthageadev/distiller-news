@@ -3,7 +3,7 @@
 import type { FormEvent } from "react";
 import { useEffect, useMemo, useRef, useState } from "react";
 
-import { COUNTRY_OPTIONS, DATE_RANGE_OPTIONS, TOPIC_OPTIONS } from "@/lib/news-options";
+import { COUNTRY_OPTIONS, TOPIC_OPTIONS } from "@/lib/news-options";
 import type { Category, CountryCode, DateRange, NewsAssistantResponse } from "@/types/news";
 
 interface NewsAssistantMessage {
@@ -51,7 +51,6 @@ export function NewsAssistant({
 
   const categoryLabel = TOPIC_OPTIONS.find((option) => option.id === category)?.label ?? category;
   const countryLabel = COUNTRY_OPTIONS.find((option) => option.id === country)?.label ?? country;
-  const dateRangeLabel = DATE_RANGE_OPTIONS.find((option) => option.id === dateRange)?.label ?? dateRange;
 
   const starterPrompts = useMemo(
     () => [

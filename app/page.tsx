@@ -17,7 +17,7 @@ import { HeroDistill } from "@/components/hero-distill";
 import { TopicPicker } from "@/components/topic-picker";
 import { CountUp, LiveAskDemo, Reveal } from "@/components/motion";
 import { timeAgo } from "@/lib/format";
-import { count, desc, eq, sql } from "drizzle-orm";
+import { count, desc, sql } from "drizzle-orm";
 
 export const dynamic = "force-dynamic";
 
